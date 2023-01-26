@@ -1,0 +1,119 @@
+@extends('layouts.main2')
+
+@section('content')
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url({{asset('img/bg-img/breadcumb3.jpg')}});">
+    <div class="bradcumbContent">
+        
+        <h2>Recent</h2>
+    </div>
+</section>
+
+<section class="miscellaneous-area section-padding-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-9">
+                
+                <div class="section-heading style-2 text-center">
+                    
+                        <div class="row">
+                                <div class="col-12">
+                                    <form>
+                                        <div class="form-group">
+                                                <input type="text" class="form-control">
+                                    <div class="load-more-btn text-center wow fadeInUp" data-wow-delay="300ms">
+                                        <button  class="btn oneMusic-btn">Search <i class="fa fa-search"></i></button>
+                                    </div>
+
+                                </div>
+                                </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        <div class="col-12 col-lg-9" style="border: 1px solid #d8d8d8;background-color: #f5f9fa;">
+            <div class="section-heading text-center mb-50 wow fadeInUp" data-wow-delay="50ms">
+                <p>See what’s new</p>
+                <h2>New Hits</h2>
+            </div>
+
+            <div class="list-unstyled">
+                
+                @forelse ($songs as $item)
+                <li class="media">
+                    <img class="align-self-center mr-3 " height="140" width="140" src="{{url('storage/'.$item->image)}}" alt="Generic placeholder image">
+                        <div class="media-body">
+                        <strong><h4>{{$item->user->name}} - {{$item->title}}</h4></strong>
+                            <div class="col-md-12 d-flex">
+                                <audio preload="auto"  controls>
+                                    <source src="{{url('storage/'.$item->path)}}">
+                                </audio>
+                                <div class="col-md-2 pt-4">
+                                    <a  class="btn btn-primary p-4 " href="#" role="button">Download</a>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </li>
+                @empty
+                    
+                @endforelse
+                    <li class="media">
+                    <img class="align-self-center mr-3 " height="140" width="140" src="{{url('img/bg-img/wt7.jpg')}}" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <strong><h4>Sam Smith - Fire</h4></strong>
+                            <div class="col-md-12 d-flex">
+                                <audio preload="auto"  controls>
+                                    <source src="audio/dummy-audio3.mp3">
+                                </audio>
+                                <div class="col-md-2 pt-4">
+                                    <a  class="btn btn-primary p-4 " href="#" role="button">Download</a>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </li>
+               
+                
+                    <div class="media">
+                    <img class="align-self-center mr-3 " height="140" width="140" src="{{url('img/bg-img/wt7.jpg')}}" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <strong><h4>Sam Smith - Fire</h4></strong>
+                            <div class="col-md-12 d-flex">
+                                <audio preload="auto"  controls>
+                                    <source src="audio/dummy-audio3.mp3">
+                                </audio>
+                                <div class="col-md-2 pt-4">
+                                    <a  class="btn btn-primary p-4 " href="#" role="button">Download</a>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+            </div>
+    </div>
+
+  <div class="container-fluid ">
+    <p>
+        <div class="oneMusic-pagination-area wow fadeInUp" data-wow-delay="300ms">
+
+            {{$songs->links()}}
+            
+        </div>
+    </p>
+    
+
+</div>  
+
+</section>
+
+
+
+
+@endsection
